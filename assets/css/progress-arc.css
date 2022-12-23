@@ -1,0 +1,33 @@
+svg {
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+path {
+  stroke-linecap: round;
+  stroke-width: 6;
+}
+
+path.grey {
+  stroke: #8b938a;
+  stroke-width: 0.65rem;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+}
+
+path.green {
+  stroke: limegreen;
+  stroke-dasharray: 198;
+  stroke-dashoffset: 198;
+  animation: dash 3s ease-out forwards;
+}
+
+.rating {
+  fill: white;
+  font-size: 2rem;
+}
+.num-review {
+  fill: white;
+  font-size: 0.5rem;
+}

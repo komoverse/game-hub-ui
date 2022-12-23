@@ -1,0 +1,46 @@
+sup {
+    color: red;
+}
+.username-exist, 
+.username-available {
+    font-size: 9px;
+    position: absolute;
+    top: 9px;
+    right: 20px;
+}
+.username-exist {
+    color: red;
+}
+.username-available {
+    color: green;
+}
+img {
+    max-width: 100%;
+}
+.media-wrapper {
+    background: #ccc;
+    padding: 5px;
+    border: 5px solid #aaa;
+    border-radius: 20px;
+}
+.media-img {
+    text-align: center;
+    height: 100px;
+}
+.media-img img {
+    max-height: 100px;
+    max-width: 100%;
+}
+.media-wrapper span {
+    font-size: 10px;
+}
+.media-img i {
+    font-size: 100px;
+}
+.sidebar-nav .sidebar-item .sidebar-link, a.sidebar-link {
+    padding: 0.4rem, 0.3rem !important;
+    font-size: 12px;
+}
+.sidebar-header {
+    padding: 1rem 1.5rem 0.375rem;
+}
