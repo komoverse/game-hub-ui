@@ -6,14 +6,14 @@
             <h3>Change Password</h3>
         </div>
     </div>
-    <form action="{{ url('admin/change-password') }}" method="POST">
+    <form action="{{ url('admin/manage/password') }}" method="POST">
         @csrf
         <div class="row mb-2">
             <div class="col-12 col-lg-2">
                 Current Password
             </div>
             <div class="col-12 col-lg-4">
-                <input type="password" required="required" name="current_password" class="form-control">
+                <input type="password" required="required" name="old_password" class="form-control">
             </div>
         </div>
         <div class="row mb-2">

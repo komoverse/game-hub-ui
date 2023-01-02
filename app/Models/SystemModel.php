@@ -14,7 +14,7 @@ class SystemModel extends Model
     static function addSystemLog($action) {
         $insert = DB::table('tb_system_log')
                     ->insert([
-                        'username' => Session::get('username'),
+                        'username' => Session::get('admindata')->username,
                         'action' => $action,
                     ]);
         return $insert;

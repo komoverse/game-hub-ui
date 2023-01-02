@@ -83,22 +83,45 @@ class NewsController extends Controller
         }
     }
 
+    function showEditNews(Request $req) {
+        $data = [
+            'news' => NewsModel::getSingleNews($req->lang, $req->id),
+            'language' => $req->lang,
+        ];
+        return view('admin/news-edit')->with($data);
+    }
+
+    function updateNews(Request $req) {
+        NewsModel::deleteNews($req->lang, $req->id);
+
+        $featured_image = $req->featured_image;
+
+        if (NewsModel::submitNews($req, $featured_image)) {
+            SystemModel::addSystemLog('Update news : '.$req->title);
+            return redirect('admin/news/list')->with('success', 'News published');
+        } else {
+            return redirect()->back()->with('error', 'Failed to publish news');
+        }
+    }
+
 
     // USER
 
-    function showNews() {
-        $newsdata = NewsModel::getNews('en');
+    function showNews(Request $req) {
+        (!$req->lang) ? $lang = 'en' : $lang = $req->lang;
+        $newsdata = NewsModel::getNews($lang);
         $data = [
-            'lang' => 'en',
+            'lang' => $lang,
             'newscontent' => $newsdata,
         ];
         return view('user.news-list')->with($data);
     }
 
     function showSingleNews(Request $req) {
+        (!$req->lang) ? $lang = 'en' : $lang = $req->lang;
         $data = [
-            'lang' => 'en',
-            'newscontent' => NewsModel::getNewsFromSlug('en', $req->slug),
+            'lang' => $lang,
+            'newscontent' => NewsModel::getNewsFromSlug($lang, $req->slug),
         ];
         return view('user.news-single')->with($data);
     }

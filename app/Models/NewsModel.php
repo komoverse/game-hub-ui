@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Session;
 
 class NewsModel extends Model
 {
@@ -46,7 +47,7 @@ class NewsModel extends Model
                         'title' => $req->title,
                         'featured_image' => $featured_image,
                         'news_content' => $req->news_content,
-                        'posted_by' => Session::get('fullname'),
+                        'posted_by' => Session::get('admindata')->fullname,
                         'is_pinned' => $left_pinned,
                         'right_pinned' => $right_pinned,
                         'visibility' => $req->visibility,

@@ -28,6 +28,9 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
+        <button style="position: fixed; left: 10px; top: 10px; z-index: 999" class="btn btn-success" onclick="$('#sidebar').toggle(400);">
+        <i class="fas fa-bars"></i>
+        </button>
         @if ($errors)
             @foreach ($errors->all() as $message) 
                 {{ $message }}
@@ -55,7 +58,7 @@
             </a>
                     </li>
 
-                    <li class="sidebar-header">
+                    {{-- <li class="sidebar-header">
                         News
                     </li>
 
@@ -101,24 +104,67 @@
                         <a class="sidebar-link" href="{{ url('admin/academy/list') }}">
               <i class="fas fa-newspaper"></i> <span class="align-middle">Academy Article List</span>
             </a>
+                    </li> --}}
+
+                    <li class="sidebar-header">
+                        Articles
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/news/list') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/news/list') }}">
+              <i class="fas fa-newspaper"></i> <span class="align-middle">News</span>
+            </a>
+                    </li><li class="sidebar-item <?= (Request::path() == 'admin/partner/list') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/partner/list') }}">
+              <i class="fas fa-newspaper"></i> <span class="align-middle">Partnership</span>
+            </a>
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/academy/list') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/academy/list') }}">
+              <i class="fas fa-newspaper"></i> <span class="align-middle">Academy</span>
+            </a>
                     </li>
 
-                    <li class="sidebar-header">Game Updates</li>
-                    <li class="sidebar-item <?= (Request::path() == 'admin/game-announcement/create') ? 'active' : ''; ?>">
+                    <li class="sidebar-header">
+                        Games
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/game/list') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/game/list') }}">
+              <i class="fas fa-gamepad"></i> <span class="align-middle">Game List</span>
+            </a>
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/game/tournament') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/game/tournament') }}">
+              <i class="fas fa-gamepad"></i> <span class="align-middle">Tournament</span>
+            </a>
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/game/marketplace') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/game/marketplace') }}">
+              <i class="fas fa-gamepad"></i> <span class="align-middle">Marketplace</span>
+            </a>
+                    </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/game/review') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/game/review') }}">
+              <i class="fas fa-gamepad"></i> <span class="align-middle">Reviews</span>
+            </a>
+                    </li>
+
+
+                    <li class="sidebar-header">KomoChess Game Updates</li>
+                    {{-- <li class="sidebar-item <?= (Request::path() == 'admin/game-announcement/create') ? 'active' : ''; ?>">
                         <a class="sidebar-link" href="{{ url('admin/game-announcement/create') }}">
                             <i class="fas fa-edit"></i> <span class="align-middle">Create Game Announcement</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="sidebar-item <?= (Request::path() == 'admin/game-announcement/list') ? 'active' : ''; ?>">
                         <a class="sidebar-link" href="{{ url('admin/game-announcement/list') }}">
                             <i class="fas fa-bullhorn"></i> <span class="align-middle">List Game Announcement</span>
                         </a>
                     </li>
-                    <li class="sidebar-item <?= (Request::path() == 'admin/patch-notes/create') ? 'active' : ''; ?>">
+                    {{-- <li class="sidebar-item <?= (Request::path() == 'admin/patch-notes/create') ? 'active' : ''; ?>">
                         <a class="sidebar-link" href="{{ url('admin/patch-notes/create') }}">
                             <i class="fas fa-edit"></i> <span class="align-middle">Create Patch Notes</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="sidebar-item <?= (Request::path() == 'admin/patch-notes/list') ? 'active' : ''; ?>">
                         <a class="sidebar-link" href="{{ url('admin/patch-notes/list') }}">
                             <i class="fas fa-sync-alt"></i> <span class="align-middle">List Patch Notes</span>
@@ -154,15 +200,15 @@
                     </li>
 
 
-                    <li class="sidebar-item <?= (Request::path() == 'admin/user-management') ? 'active' : ''; ?>">
-                        <a class="sidebar-link" href="{{ url('admin/user-management') }}">
-              <i class="fas fa-users-cog"></i> <span class="align-middle">User Management</span>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/manage/admin') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/manage/admin') }}">
+              <i class="fas fa-users-cog"></i> <span class="align-middle">Manage Admin</span>
             </a>
                     </li>
 
 
-                    <li class="sidebar-item <?= (Request::path() == 'admin/change-password') ? 'active' : ''; ?>">
-                        <a class="sidebar-link" href="{{ url('admin/change-password') }}">
+                    <li class="sidebar-item <?= (Request::path() == 'admin/manage/password') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/manage/password') }}">
               <i class="fas fa-key"></i> <span class="align-middle">Change Password</span>
             </a>
                     </li>

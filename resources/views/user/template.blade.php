@@ -71,12 +71,12 @@
                         <i class="fa-solid fa-rocket me-2"></i> MINTS
                     </div>
                     <div class="nav-content flex-column">
-                        <a class="nav-link" href="{{ url('komochess') }}#mints">
+                        <a class="nav-link" href="{{ url('komochess') }}/mints">
                             <img src="{{ url('assets/img/komochess/icon.jpg') }}" alt="">
                             KomoChess
                             <span class="timer btn btn-sm btn-outline-success">LIVE</span>
                         </a>
-                        <a class="nav-link" href="{{ url('telyu-racer') }}#mints">
+                        <a class="nav-link" href="{{ url('telyu-racer') }}/mints">
                             <img src="{{ url('assets/img/telyu/logo.png') }}" alt="">
                             Telyu Racer
                             <span class="timer">30 days</span>
@@ -86,21 +86,20 @@
                         <i class="fa-solid fa-trophy me-2"></i> TOURNAMENTS
                     </div>
                     <div class="nav-content flex-column">
-                        <a class="nav-link" href="{{ url('telyu-racer') }}#tournament">
-                            <img src="{{ url('assets/img/telyu/logo.png') }}" alt="">
-                            Telyu Racer
-                            <span class="timer">1 day</span>
+                        @foreach($sidebar_data['tournament_schedule']['ongoing'] as $row)
+                        <a class="nav-link" href="{{ url($row->game_id) }}/tournament">
+                            <img src="{{ $sidebar_data['game_data'][$row->game_id]->logo_image_url }}" alt="">
+                            {{ $sidebar_data['game_data'][$row->game_id]->game_name }}
+                            <span class="timer">LIVE</span>
                         </a>
-                        <a class="nav-link" href="{{ url('telyu-racer') }}#tournament">
-                            <img src="{{ url('assets/img/telyu/logo.png') }}" alt="">
-                            Telyu Racer
-                            <span class="timer">7 days</span>
+                        @endforeach
+                        @foreach($sidebar_data['tournament_schedule']['upcoming'] as $row)
+                        <a class="nav-link" href="{{ url($row->game_id) }}/tournament">
+                            <img src="{{ $sidebar_data['game_data'][$row->game_id]->logo_image_url }}" alt="">
+                            {{ $sidebar_data['game_data'][$row->game_id]->game_name }}
+                            <span class="timer">{{ date('j', strtotime($row->start_time.' - now')).' days' }}</span>
                         </a>
-                        <a class="nav-link" href="{{ url('komochess') }}#tournament">
-                            <img src="{{ url('assets/img/komochess/icon.jpg') }}" alt="">
-                            KomoChess
-                            <span class="timer">24 days</span>
-                        </a>
+                        @endforeach
                     </div>
                     <div class="nav-title">
                         <i class="fa-solid fa-arrow-trend-up me-2"></i> TRENDING
@@ -121,11 +120,11 @@
                         <i class="fa-solid fa-gamepad me-2"></i> PLAY NOW
                     </div>
                     <div class="nav-content flex-column">
-                        <a class="nav-link" href="{{ url('komochess') }}#play">
+                        <a class="nav-link" href="{{ url('komochess') }}/play-now">
                             <img src="{{ url('assets/img/komochess/icon.jpg') }}" alt="">
                             KomoChess
                         </a>
-                        <a class="nav-link" href="{{ url('telyu-racer') }}#play">
+                        <a class="nav-link" href="{{ url('telyu-racer') }}/play-now">
                             <img src="{{ url('assets/img/telyu/logo.png') }}" alt="">
                             Telyu Racer
                         </a>
@@ -163,7 +162,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex-shrink-1" id="main-content">
+                <div class="flex-shrink-1 w-100" id="main-content">
                     @yield('content')
                 </div>
             </div>
@@ -232,9 +231,6 @@
             });
             function toggleSidebar() {
                 $('#sidebar').toggle({ direction: "left" }, 1000);
-            }
-            function goto(urlhash) {
-                window.location.href=urlhash;
             }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

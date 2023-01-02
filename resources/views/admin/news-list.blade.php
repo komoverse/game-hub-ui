@@ -4,9 +4,11 @@
     <div class="row">
         <div class="col-12">
             <h2>Latest 5 News Article</h2>
+            <a href="{{ url('admin/news/create') }}" class="btn btn-success"><i class="fas fa-plus"></i> &nbsp; Create News Article</a>
+
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12 col-lg-8">
             <h3 class="mb-3"><img style="height: 20px" src="{{ url('assets/img/flags/gb.svg') }}" alt=""> English</h3>
         </div>
