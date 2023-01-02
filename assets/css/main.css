@@ -207,17 +207,20 @@ h1 {
     border: 0 !important;
     border-bottom: 5px solid limegreen !important;
 }
-#search-bar {
+.search-bar {
     background: transparent;
     border-radius: 25px;
     border: 1px solid #444;
     padding-left: 45px;
     color: white;
 }
-#search-bar:focus {
+.search-bar:focus {
     box-shadow: 0 0 2px 2px limegreen;
+    background: transparent;
+    color: white;
+    border-color: limegreen;
 }
-#search-icon {
+.search-icon {
     position: absolute;
     left: 15px;
     top: 10px;
@@ -514,4 +517,19 @@ h1 {
 .academy-ft-img {
     height: 200px!important;
     width: 100%;
+}
+#search-result-wrapper .mark,
+#search-result-wrapper mark {
+    padding: 0 !important;
+}
+.no-decor-link {
+    text-decoration: none;
+    color: inherit;
+}
+.no-decor-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+.no-decor-link:hover div {
+    background: dimgrey;
 }

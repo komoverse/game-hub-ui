@@ -112,4 +112,16 @@ class NewsModel extends Model
                     ->first();
         return $result;
     }
+
+    static function search($search_query, $lang = 'en') {
+        $result = DB::table('tb_news_'.$lang)
+                    ->where('visibility', '1')
+                    ->where(function($query) use ($search_query) {
+                        $query
+                            ->where('title', 'LIKE', '%'.$search_query.'%')
+                            ->orWhere('news_content', 'LIKE', '%'.$search_query.'%');
+                    })
+                    ->get();
+        return $result;
+    }
 }

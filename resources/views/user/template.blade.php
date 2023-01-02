@@ -27,8 +27,11 @@
                 </div>
                 <div class="d-none d-md-block col-md-4 py-3">
                     <div class="position-relative">
-                        <i class="fa-solid fa-search" id="search-icon"></i>
-                        <input type="text" class="form-control" placeholder="Search" id="search-bar">
+                        <form action="{{ url('search') }}" method="POST">
+                        @csrf    
+                        <i class="fa-solid fa-search search-icon"></i>
+                        <input type="text" name="search_query" class="form-control search-bar" placeholder="Search">
+                        </form>
                     </div>
                 </div>
                 <div class="col-5 col-md-4 text-end ps-0 py-3">
@@ -44,8 +47,11 @@
             <div class="row bg-black fixed-top py-3" id="mobileSearch" style="display: none">
                 <div class="col-10">
                     <div class="position-relative">
-                        <i class="fa-solid fa-search" id="search-icon"></i>
-                        <input type="text" class="form-control" placeholder="Search" id="search-bar">
+                        <form action="{{ url('search') }}" method="POST">
+                        @csrf
+                        <i class="fa-solid fa-search search-icon"></i>
+                        <input type="text" name="search_query" class="form-control search-bar" placeholder="Search">
+                        </form>
                     </div>
                 </div>
                 <div class="col-2">

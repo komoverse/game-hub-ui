@@ -9,6 +9,7 @@ use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\AcademyController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,12 @@ use App\Http\Controllers\TournamentController;
 Route::get('/', function () {
     return view('user.home');
 });
-Route::get('telyu-racer', function() {
-    return view('user.game-detail-telyu');
-});
 Route::get('games', [GameController::class, 'showGameList']);
 Route::get('{game}/items/{id}', function(){
     return view('user.market-listing');
 });
+
+Route::post('search', [SearchController::class, 'search']);
 
 Route::get('{game_id}', [GameController::class, 'showGameOverview']);
 Route::get('{game_id}/overview', [GameController::class, 'showGameOverview']);
