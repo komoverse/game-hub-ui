@@ -36,4 +36,13 @@ class MarketplaceController extends Controller
         }
         dd($exec_create);
     }
+
+    // USER
+    public function showGameMarketplaceListing(Request $req) {
+        $api_data = [
+            'game_id' => $req->game_id,
+        ];
+        $mp_data = (new APIController)->komoAPI_V2('GET', '/v2/market/listings', $api_data);
+        dd($mp_data);
+    }
 }

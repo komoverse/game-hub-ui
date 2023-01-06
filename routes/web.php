@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\MintController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\InsightController;
 
 
 // =====================
@@ -94,6 +95,11 @@ Route::prefix('admin')->middleware('admin.auth')->group(function(){
         Route::get('mints', [MintController::class, 'showMintList']);
         Route::get('mints/add', [MintController::class, 'showMintForm']);
         Route::post('mints/add', [MintController::class, 'submitMint']);
+
+        Route::get('insight', [InsightController::class, 'showGameInsight']);
+        Route::get('insight/update', [InsightController::class, 'showInsightForm']);
+        Route::get('insight/update/{game_id = null}', [InsightController::class, 'showInsightForm']);
+        Route::post('insight/update', [InsightController::class, 'updateInsight']);
     });
 
 });
@@ -157,3 +163,5 @@ Route::get('{game_id}/play-now', [GameController::class, 'showPlayNow']);
 Route::get('{game_id}/tournament', [TournamentController::class, 'showTournament']);
 Route::get('{game_id}/review', [ReviewController::class, 'showGameReview']);
 Route::get('{game_id}/mints', [MintController::class, 'getMintByGame']);
+Route::get('{game_id}/insight', [InsightController::class, 'getInsightByGame']);
+Route::get('{game_id}/items', [MarketplaceController::class, 'showGameMarketplaceListing']);
