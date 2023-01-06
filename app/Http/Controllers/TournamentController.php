@@ -52,11 +52,6 @@ class TournamentController extends Controller
             'ongoing_tournaments' => $ongoing_tournaments->data,
             'upcoming_tournaments' => $upcoming_tournaments->data,
         ];
-        if (!empty($game_data->data)) {
-            return view('user.game-overview')->with($data);
-        } else {
-            abort(404);
-        }
         return view('user.tournament')->with($data);
     }
 }

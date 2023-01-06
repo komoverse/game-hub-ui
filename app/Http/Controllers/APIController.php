@@ -34,4 +34,27 @@ class APIController extends Controller
         $result = json_decode($response);
         return $result;
     }
+
+    public function komoAPI_V1($method, $url, $data = null) {
+
+        $curl = curl_init($this->komo_endpoint.$url);
+        if ($method == 'POST') {
+            curl_setopt($curl, CURLOPT_POST, true);
+        } else {
+            curl_setopt($curl, CURLOPT_POST, false);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+        }
+        $data['api_key'] = $this->komo_api_key;
+        if ($data) {
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $send_header = array('Content-Type: application/json');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $send_header);
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $result = json_decode($response);
+        return $result;
+    }
 }

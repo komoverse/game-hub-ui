@@ -142,6 +142,11 @@
               <i class="fas fa-gamepad"></i> <span class="align-middle">Marketplace</span>
             </a>
                     </li>
+                    <li class="sidebar-item <?= (Request::path() == 'admin/game/mint') ? 'active' : ''; ?>">
+                        <a class="sidebar-link" href="{{ url('admin/game/mints') }}">
+              <i class="fas fa-gamepad"></i> <span class="align-middle">Mints</span>
+            </a>
+                    </li>
                     <li class="sidebar-item <?= (Request::path() == 'admin/game/review') ? 'active' : ''; ?>">
                         <a class="sidebar-link" href="{{ url('admin/game/review') }}">
               <i class="fas fa-gamepad"></i> <span class="align-middle">Reviews</span>
