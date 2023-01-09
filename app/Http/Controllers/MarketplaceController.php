@@ -43,6 +43,27 @@ class MarketplaceController extends Controller
             'game_id' => $req->game_id,
         ];
         $mp_data = (new APIController)->komoAPI_V2('GET', '/v2/market/listings', $api_data);
-        dd($mp_data);
+
+        $game_data = (new APIController)->komoAPI_V2('GET', '/v2/game/'.$req->game_id);
+        $data = [
+            'game_data' => $game_data->data,
+            'mp_listing' => $mp_data,
+        ];
+        return view('user.game-market')->with($data);
+    }
+
+    public function showSingleListing(Request $req) {
+        $api_data = [
+            'game_id' => $req->game_id,
+            'list_id' => $req->list_id,
+        ];
+        $mp_data = (new APIController)->komoAPI_V2('GET', '/v2/market/item/'.$req->game_id.'/'.$req->list_id);
+
+        $game_data = (new APIController)->komoAPI_V2('GET', '/v2/game/'.$req->game_id);
+        $data = [
+            'game_data' => $game_data->data,
+            'listing' => $mp_data,
+        ];
+        return view('user.game-market-listing')->with($data);
     }
 }

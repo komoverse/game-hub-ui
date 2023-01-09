@@ -165,3 +165,4 @@ Route::get('{game_id}/review', [ReviewController::class, 'showGameReview']);
 Route::get('{game_id}/mints', [MintController::class, 'getMintByGame']);
 Route::get('{game_id}/insight', [InsightController::class, 'getInsightByGame']);
 Route::get('{game_id}/items', [MarketplaceController::class, 'showGameMarketplaceListing']);
+Route::get('{game_id}/item/{list_id}', [MarketplaceController::class, 'showSingleListing']);
